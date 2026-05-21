@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 function App() {
-  const [isDemoMode, setIsDemoMode] = useState(false);
+  const [isDemoMode, setIsDemoMode] = useState(true);
 
   // Profile state
   const [profile, setProfile] = useState({
@@ -47,7 +47,9 @@ function App() {
   // Tabs feature
   const [tabs, setTabs] = useState([
     { id: 'main', name: 'Main Links', color: 'bg-yellow-200' },
-    { id: 'socials', name: 'Socials', color: 'bg-pink-200' }
+    { id: 'socials', name: 'Socials', color: 'bg-pink-200' },
+    { id: 'projects', name: 'Projects', color: 'bg-green-200' },
+    { id: 'music', name: 'Playlists', color: 'bg-blue-200' }
   ]);
   const [activeTab, setActiveTab] = useState('main');
   
@@ -113,6 +115,34 @@ function App() {
       title: "Contact Me",
       url: "https://example.com/contact",
       imageUrl: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=64&auto=format&fit=crop",
+    },
+    {
+      id: 6,
+      tabId: 'projects',
+      title: "Weather App",
+      url: "https://example.com/weather",
+      imageUrl: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=64&auto=format&fit=crop",
+    },
+    {
+      id: 7,
+      tabId: 'projects',
+      title: "E-Commerce Clone",
+      url: "https://example.com/shop",
+      imageUrl: "https://images.unsplash.com/photo-1472851294608-062e1c94d932?q=80&w=64&auto=format&fit=crop",
+    },
+    {
+      id: 8,
+      tabId: 'music',
+      title: "Coding Focus Playlist",
+      url: "https://spotify.com/",
+      imageUrl: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=64&auto=format&fit=crop",
+    },
+    {
+      id: 9,
+      tabId: 'music',
+      title: "My Favorite Podcast",
+      url: "https://example.com/podcast",
+      imageUrl: "https://images.unsplash.com/photo-1589903308904-1010c2294adc?q=80&w=64&auto=format&fit=crop",
     }
   ]);
 
@@ -147,12 +177,20 @@ function App() {
     <div className="min-h-screen flex flex-col md:flex-row pb-20 md:pb-0 font-sans" style={{ backgroundColor: '#fdfbf7', backgroundImage: 'radial-gradient(#e5e7eb 1px, transparent 1px)', backgroundSize: '24px 24px' }}>
       
       {/* Demo View Toggle */}
-      <button 
-        onClick={() => setIsDemoMode(!isDemoMode)}
-        className="fixed top-4 right-4 z-[100] bg-slate-800 text-white px-4 py-2 rounded-full shadow-lg font-bold hover:bg-slate-700 transition"
-      >
-        {isDemoMode ? "Exit Demo Page" : "View Demo Page"}
-      </button>
+      <div className="fixed top-4 right-4 z-[100] flex items-center gap-3">
+        {isDemoMode && (
+          <div className="hidden md:flex items-center gap-2 text-slate-800 font-bold bg-white/80 backdrop-blur px-4 py-2 rounded shadow-sm border border-slate-200 animate-pulse">
+            <span>See how my feature changes it</span>
+            <span className="text-xl">👉</span>
+          </div>
+        )}
+        <button 
+          onClick={() => setIsDemoMode(!isDemoMode)}
+          className="bg-slate-800 text-white px-6 py-3 rounded-full shadow-lg font-bold hover:bg-slate-700 transition transform hover:scale-105"
+        >
+          {isDemoMode ? "Feature Implemented" : "Back to Demo"}
+        </button>
+      </div>
 
       {/* Sidebar for tabs */}
       {!isDemoMode && (
