@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 function App() {
   const [isDemoMode, setIsDemoMode] = useState(true);
 
-  // Profile state
   const [profile, setProfile] = useState({
     name: "Joseph Perez",
     role: "Software Developer",
@@ -19,7 +18,6 @@ function App() {
     }
   };
 
-  // Editing logic for profile info
   const [isEditingName, setIsEditingName] = useState(false);
   const [tempName, setTempName] = useState(profile.name);
 
@@ -44,7 +42,6 @@ function App() {
     setIsEditingBio(false);
   };
 
-  // Tabs feature
   const [tabs, setTabs] = useState([
     { id: 'main', name: 'Main Links', color: 'bg-yellow-200' },
     { id: 'socials', name: 'Socials', color: 'bg-pink-200' },
@@ -79,7 +76,6 @@ function App() {
     }
   };
 
-  // Links state
   const [links, setLinks] = useState([
     {
       id: 1,
@@ -146,7 +142,6 @@ function App() {
     }
   ]);
 
-  // New link form state
   const [showAddForm, setShowAddForm] = useState(false);
   const [newLink, setNewLink] = useState({ title: '', url: '', imageUrl: '' });
 
@@ -176,7 +171,6 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col md:flex-row pb-20 md:pb-0 font-sans" style={{ backgroundColor: '#fdfbf7', backgroundImage: 'radial-gradient(#e5e7eb 1px, transparent 1px)', backgroundSize: '24px 24px' }}>
       
-      {/* Demo View Toggle */}
       <div className="fixed top-4 right-4 z-[100] flex items-center gap-3">
         {isDemoMode && (
           <div className="hidden md:flex items-center gap-2 text-slate-800 font-bold bg-white/80 backdrop-blur px-4 py-2 rounded shadow-sm border border-slate-200 animate-pulse">
@@ -192,7 +186,6 @@ function App() {
         </button>
       </div>
 
-      {/* Sidebar for tabs */}
       {!isDemoMode && (
       <nav className="fixed bottom-0 md:sticky md:top-0 left-0 w-full md:w-64 h-auto md:h-screen bg-white/60 md:bg-white/40 backdrop-blur-md border-t md:border-t-0 md:border-r border-slate-200 z-50 flex flex-row md:flex-col md:pt-12 p-3 md:p-6 gap-3 overflow-x-auto md:overflow-y-auto shadow-xl items-center md:items-stretch hide-scrollbar">
         <h3 className="hidden md:block text-slate-500 font-bold mb-4 uppercase tracking-wider text-sm px-2">Notebook Sets</h3>
@@ -242,14 +235,11 @@ function App() {
       </nav>
       )}
 
-      {/* Main Content Area */}
       <div className="flex-1 flex flex-col items-center py-12 px-4 sm:px-8 overflow-y-auto">
         <div className="max-w-md w-full flex flex-col items-center text-center mt-4 bg-white/50 backdrop-blur border border-slate-200 p-8 rounded-xl shadow-sm relative">
           
-          {/* Profile tape decoration */}
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-slate-300 opacity-60 rotate-2"></div>
 
-          {/* Profile Image with Upload */}
           <div className="relative w-32 h-32 mb-6 group">
             <label className={`relative w-full h-full ${isDemoMode ? '' : 'cursor-pointer'} overflow-hidden rounded-full border-4 border-white shadow-md block`} title={isDemoMode ? '' : "Upload new image"}>
               <input 
@@ -312,7 +302,6 @@ function App() {
             </div>
           )}
 
-          {/* Role Editable Field */}
           {isEditingRole && !isDemoMode ? (
             <div className="flex items-center gap-2 mb-4 w-full">
               <input 
@@ -350,7 +339,6 @@ function App() {
             </div>
           )}
 
-          {/* Bio Editable Field */}
           {isEditingBio && !isDemoMode ? (
             <div className="flex items-center gap-2 mb-6 w-full">
               <textarea 
@@ -388,7 +376,6 @@ function App() {
           )}
         </div>
 
-        {/* Dynamic Tab Heading */}
         <div className="max-w-md w-full flex items-center justify-center border-b-2 border-dashed border-slate-300 mt-8 mb-6 pb-2 px-2">
           <h3 className="text-slate-600 font-bold text-xl uppercase tracking-widest flex items-center gap-2 px-4 py-1 bg-white rounded shadow-sm -rotate-2">
             📌 {isDemoMode ? 'All Links' : (tabs.find(t => t.id === activeTab)?.name || 'Links')}
@@ -401,7 +388,6 @@ function App() {
           </p>
         )}
 
-        {/* Links Section based on Active Tab */}
         <div className="max-w-md w-full flex flex-col gap-6 mb-8 pt-2">
           {displayLinks.length === 0 ? (
             <div className="text-slate-500 bg-white/50 py-10 rounded text-center border-2 border-dashed border-slate-300">
@@ -410,7 +396,6 @@ function App() {
             </div>
           ) : (
             displayLinks.map((link, index) => {
-              // Create a random rotation for each link based on its index to look like scattered post-its
               const rotations = ['-rotate-2', 'rotate-1', 'rotate-2', '-rotate-1', 'rotate-0'];
               const rotateClass = rotations[Math.abs(index) % rotations.length];
               const linkColor = getTabColor(link.tabId);
@@ -450,7 +435,6 @@ function App() {
           )}
         </div>
 
-        {/* Add Link Form Section */}
         {!isDemoMode && (
         <div className="max-w-md w-full bg-white border border-slate-200 rounded p-4 shadow-sm relative rotate-1">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-slate-200 opacity-80 -rotate-2"></div>
@@ -512,7 +496,6 @@ function App() {
         </div>
         )}
         
-        {/* Footer */}
         <div className="mt-auto pt-16 pb-4 text-slate-400 text-sm w-full text-center">
           <p>© {new Date().getFullYear()} {profile.name}. Designed with ♥️.</p>
         </div>
