@@ -8,7 +8,7 @@ function App() {
     name: "Joseph Perez",
     role: "Software Developer",
     bio: "Building beautiful and functional web experiences.",
-    avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=256&auto=format&fit=crop"
+    avatarUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
   });
 
   const handleImageUpload = (e) => {
